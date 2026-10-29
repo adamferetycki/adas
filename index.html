@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Block Level Elements</title>
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+
+            .back-to-top {
+                display: inline-block;
+                padding: 0.65rem 1rem;
+                border: 1px solid #c9d2dc;
+                border-radius: 999px;
+                color: #23384d;
+                background: #f5f8fb;
+                text-decoration: none;
+                transition: background-color 180ms ease, transform 180ms ease;
+            }
+
+            .back-to-top:hover {
+                background: #e8eff6;
+                transform: translateY(-2px);
+            }
+
+            .back-to-top:focus-visible {
+                outline: 3px solid #527da5;
+                outline-offset: 3px;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                html {
+                    scroll-behavior: auto;
+                }
+
+                .back-to-top {
+                    transition: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+       
+       <h2 id="top">This is the top of the page.</h2>
+
+
+        before <div> This is a div element.</div> after
+       
+       <p>This is a paragraph element.</p>
+
+       <hr>
+       <ol> 
+        <li> Item list</li>
+       </ol>  
+
+       <ul>
+        <li> Item list</li>
+        <li> Item list</li>
+        <li> Item list</li>
+        </ul>
+
+        <h6> This is a heading element.</h6>
+        <h5> This is a heading element.</h5>
+        <h4> This is a heading element.</h4>
+        <h3> This is a heading element.</h3>
+        <h2> This is a heading element.</h2>
+        <h1> This is a heading element.</h1> 
+        
+        <div> something something</div>
+         
+        <br>
+        <pre> This is a pre element.</pre>
+        <address> This is an address element.</address> 
+        <p> This is a paragraph element.</p>
+        <blockquote> This is a blockquote element.</blockquote>
+        <p> This is a paragraph element.</p>
+
+        <p> This is a    s p a c e d    paragraph element.</p>
+
+        This is a    s p a c e d    text element.
+
+         <p> This is a &nbsp;spaced &nbsp; paragraph element.</p>
+
+         <hr>
+         <h1> span elements</h1>
+
+         <span> This is a span element.</span>
+         <br>
+        <strong> This is a strong element.</strong>
+        <br>
+        <em> This is an em element.</em>
+        <br>
+        <b> This is a b element.</b>
+        <br>
+        <i> This is an i element.</i>
+        <br>
+        <mark> This is a mark element.</mark>
+        <br>
+        <small> This is a small element.</small>
+        <br>
+        <del> This is a del element.</del>
+        <br>
+        <ins> This is an ins element.</ins>
+        <br>
+        <sub> This is a sub element.</sub>
+        <br>
+        <sup> This is a sup element.</sup>
+
+        <h1>Page Anchor</h1>
+        <a class="back-to-top" href="#top">↑ Go to top</a>
+        <br>
+
+        <!--generated scrolling script for the "back to top" link, -->
+        <script>
+            const topLink = document.querySelector(".back-to-top");
+            const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+                if (reduceMotion.matches) {
+                    window.scrollTo(0, 0);
+                    return;
+                }
+                const startPosition = window.scrollY;
+                const duration = 1600;
+                const startTime = performance.now();
+
+                    window.scrollTo(0, startPosition * (1 - easing));
+
+                    if (progress < 1) {
+                        requestAnimationFrame(animateScroll);
+                    }
+    
+        </script>
+         <!--end of generated scrolling script for the "back to top" link, reduced motion support included -->
+
+
+    </body>
+</html>
