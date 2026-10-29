@@ -4,29 +4,121 @@
         <meta charset="UTF-8">
         <title>Block Level Elements</title>
         <style>
+            :root {
+                color-scheme: light;
+                font-family: Georgia, "Times New Roman", serif;
+                color: #263b32;
+                background: #17241e;
+            }
+
             html {
-                scroll-behavior: smooth;
+                scroll-behavior: auto;
+            }
+
+            body {
+                box-sizing: border-box;
+                max-width: 760px;
+                margin: 3rem auto;
+                padding: clamp(1.5rem, 6vw, 4rem);
+                border: 1px solid #d5dfd4;
+                border-radius: 24px;
+                background: #f7f5ec;
+                box-shadow: 0 24px 70px #080f0b66;
+                font-size: 1.05rem;
+                line-height: 1.75;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                color: #285540;
+                line-height: 1.2;
+            }
+
+            h1 {
+                margin-top: 2.5rem;
+                padding-bottom: 0.55rem;
+                border-bottom: 2px solid #c8d7c8;
+                font-size: clamp(1.8rem, 5vw, 2.5rem);
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            p,
+            ul,
+            ol {
+                margin-block: 1.25rem;
+            }
+
+            li::marker {
+                color: #63866b;
+            }
+
+            hr {
+                margin-block: 2rem;
+                border: 0;
+                border-top: 1px solid #d5dfd4;
+            }
+
+            pre,
+            body > div {
+                padding: 1rem 1.25rem;
+                border-left: 4px solid #769879;
+                border-radius: 0 10px 10px 0;
+                background: #e9eee4;
+            }
+
+            address {
+                color: #587263;
+            }
+
+            blockquote {
+                margin-inline: 0;
+                padding: 0.75rem 1.25rem;
+                border-left: 3px solid #b18b5f;
+                color: #5e5749;
+                font-style: italic;
+            }
+
+            mark {
+                padding: 0.1em 0.3em;
+                border-radius: 4px;
+                background: #e8d99a;
             }
 
             .back-to-top {
                 display: inline-block;
                 padding: 0.65rem 1rem;
-                border: 1px solid #c9d2dc;
+                border: 1px solid #285540;
                 border-radius: 999px;
-                color: #23384d;
-                background: #f5f8fb;
+                color: #fffdf6;
+                background: #285540;
                 text-decoration: none;
-                transition: background-color 180ms ease, transform 180ms ease;
+                transition: background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
             }
 
             .back-to-top:hover {
-                background: #e8eff6;
+                background: #386c50;
+                box-shadow: 0 5px 14px #28554033;
                 transform: translateY(-2px);
             }
 
             .back-to-top:focus-visible {
-                outline: 3px solid #527da5;
+                outline: 3px solid #b18b5f;
                 outline-offset: 3px;
+            }
+
+            @media (max-width: 600px) {
+                body {
+                    margin: 1rem;
+                    padding: 1.5rem;
+                    border-radius: 16px;
+                }
             }
 
             @media (prefers-reduced-motion: reduce) {
@@ -116,20 +208,33 @@
             const topLink = document.querySelector(".back-to-top");
             const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+            topLink.addEventListener("click", (event) => {
+                event.preventDefault();
+
                 if (reduceMotion.matches) {
                     window.scrollTo(0, 0);
                     return;
                 }
+
                 const startPosition = window.scrollY;
                 const duration = 1600;
                 const startTime = performance.now();
+
+                function animateScroll(currentTime) {
+                    const progress = Math.min((currentTime - startTime) / duration, 1);
+                    const easing = progress < 0.5
+                        ? 4 * progress * progress * progress
+                        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
 
                     window.scrollTo(0, startPosition * (1 - easing));
 
                     if (progress < 1) {
                         requestAnimationFrame(animateScroll);
                     }
-    
+                }
+
+                requestAnimationFrame(animateScroll);
+            });
         </script>
          <!--end of generated scrolling script for the "back to top" link, reduced motion support included -->
 
